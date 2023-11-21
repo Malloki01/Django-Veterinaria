@@ -122,7 +122,7 @@
                            </div>
                         </div>
                         <div class="col-md-6">
-                           <div class="image_1"><img src="images/img-1.png"></div>
+                           <div class="image_1"><img src="{%static 'images/img-1.png' %}"></div>
                         </div>
                      </div>
                   </div>
@@ -239,11 +239,20 @@
                </div>
                <div class="col-md-6">
                   <div class="contact_box">
-                     <h1 class="book_text">Book Appoinment</h1>
-                     <input type="text" class="Email_text" placeholder="Name" name="Name">
-                     <input type="text" class="Email_text" placeholder="Name" name="Name">
-                     <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
-                     <div class="send_bt"><a href="#">SEND</a></div>
+                     <form id="citaForm" action="{% url 'registrarCita' %}" method= "POST">
+                     {% csrf_token %}
+                     <h1 class="book_text">Escribenos</h1>
+                     <input type="text" class="Email_text" placeholder="Nombre" name="nombre">
+                     <input type="text" class="Email_text" placeholder="Telefono" name="telefono">
+                     <input type="text" class="Email_text" placeholder="Correo" name="correo">
+                     <textarea class="massage-bt" placeholder="Escribenos el motivo" rows="5" id="comment" name="mensaje"></textarea>
+                     <div class="send_bt"><a href="#" onclick="submitCitaForm()">SEND</a></div>
+                     </form>
+                     <script>
+                        function submitCitaForm() {
+                          document.getElementById('citaForm').submit();
+                        }
+                      </script>
                   </div>
                </div>
             </div>
