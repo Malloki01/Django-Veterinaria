@@ -7,6 +7,12 @@ from .models import Cita
 def mi_vista(request):
     return render(request, 'index.html')
 
+def contact(request):
+    return render(request, 'contact.html')
+
+def client(request):
+    return render(request, 'client.html')
+
 def registrarCita(request):
     nombre = request.POST["nombre"]
     telefono = request.POST["telefono"]

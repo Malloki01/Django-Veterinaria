@@ -44,7 +44,7 @@
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Inicio</a>
+                  <a class="nav-link" href="{% url 'index' %}">Inicio</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="health.html">Pet Shop</a>
@@ -56,10 +56,10 @@
                   <a class="nav-link" href="news.html">Especialistas</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="client.html">Sobre Nosotros</a>
+                  <a class="nav-link" href="{% url 'client' %}">Sobre Nosotros</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Contactenos</a>
+                  <a class="nav-link" href="{% url 'contact' %}">Contactenos</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="#"><img src="{% static 'images/search-icon.png' %}"></a>
@@ -242,11 +242,11 @@
                      <form id="citaForm" action="{% url 'registrarCita' %}" method= "POST">
                      {% csrf_token %}
                      <h1 class="book_text">Escribenos</h1>
-                     <input type="text" class="Email_text" placeholder="Nombre" name="nombre">
-                     <input type="text" class="Email_text" placeholder="Telefono" name="telefono">
-                     <input type="text" class="Email_text" placeholder="Correo" name="correo">
-                     <textarea class="massage-bt" placeholder="Escribenos el motivo" rows="5" id="comment" name="mensaje"></textarea>
-                     <div class="send_bt"><a href="#" onclick="submitCitaForm()">SEND</a></div>
+                     <input type="text" class="Email_text" placeholder="Nombre" name="nombre" >
+                     <input type="text" class="Email_text" placeholder="Telefono" name="telefono" >
+                     <input type="text" class="Email_text" placeholder="Correo" name="correo" >
+                     <textarea class="massage-bt" placeholder="Escribenos el motivo" rows="5" id="comment" name="mensaje" ></textarea>
+                     <div class="send_bt"><a href="#" onclick="submitCitaForm()">Enviar</a></div>
                      </form>
                      <script>
                         function submitCitaForm() {
