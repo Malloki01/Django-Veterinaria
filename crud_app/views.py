@@ -1,10 +1,13 @@
 # Create your views here.
 # views.py
 
+from multiprocessing import AuthenticationError
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cita
 from .forms import CitaForm  # Necesitarás crear un formulario (forms.py) para el modelo Cita
 
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm
 
 #Vistas de las páginas
 def mi_vista(request):
@@ -53,3 +56,20 @@ def editar_cita(request, id):
     else:
         form = CitaForm(instance=cita)
     return render(request, 'cita/editar_cita.html', {'form': form})
+
+#Login
+
+def signin(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request)  
+            return redirect('listar_citas')
+        else:
+            return render(request, 'login.html', {'error': 'Invalid username or password'})
+
+    return render(request, 'login.html')

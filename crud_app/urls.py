@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 from .views import mi_vista ,listar_citas, detalle_cita, editar_cita, eliminar_cita
+from .views import signin
+
 
 urlpatterns = [
     path('', mi_vista, name='mi_vista'),
@@ -18,4 +20,7 @@ urlpatterns = [
     #Revisar esta parte
     path('cita/editar/<int:id>/', editar_cita, name='editar_cita'),
     path('cita/eliminar/<int:id>/', eliminar_cita, name='eliminar_cita'),
+
+    #Login
+    path('signin', signin, name='signin'),
 ]
