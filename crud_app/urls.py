@@ -1,7 +1,8 @@
 from django.urls import path
 from . import views
-from .views import mi_vista ,listar_citas, detalle_cita, editar_cita, eliminar_cita
+from .views import  mi_vista ,listar_citas, detalle_cita, editar_cita, eliminar_cita
 from .views import signin
+from .views import generar_factura_pdf
 
 
 urlpatterns = [
@@ -23,4 +24,8 @@ urlpatterns = [
 
     #Login
     path('signin', signin, name='signin'),
+
+    # Generar Factura
+    path('factura/<int:cita_id>/pdf/', generar_factura_pdf, name='generar_factura_pdf'),
+
 ]
